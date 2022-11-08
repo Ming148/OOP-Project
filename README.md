@@ -1,6 +1,6 @@
 # OOP-Project
 
-Flappy Bird
+Flappy Bird :baby_chick:
 
 ## รายละเอียดโปรเจค
 
@@ -9,7 +9,7 @@ Flappy Bird
 ## สมาชิก
 |รหัสนักศึกษา|ชื่อ-นามสกุล|Username|
 |---|---|---|
-|64070012|คณาวัชร์ ระดมกิจ||
+|64070012|คณาวัชร์ ระดมกิจ|[NinEAynGNa-64070012](https://github.com/NinEAynGNa-64070012)|
 |64070075|พีรณัฐ ทิพย์รักษ์|[whiskas69](https://github.com/whiskas69)|
 |64070105|ศศิกานต์ หลงกระจ่าง||
 |64070113|โหว้ย หมิง ลี|[Ming148](https://github.com/Ming148)|
