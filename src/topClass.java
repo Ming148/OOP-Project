@@ -8,15 +8,15 @@
  * @author m.i.n.g_lee
  */
 import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.Image;
+// import java.awt.Toolkit;
+// import java.awt.Image;
 import javax.swing.*;
 
 public class topClass {
 
     // ตัวแปรคงที่
-    private static final int SCREEN_WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-    private static final int SCREEN_HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    private static final int SCREEN_WIDTH = 400;
+    private static final int SCREEN_HEIGHT = 800;
 
 
 
@@ -34,8 +34,11 @@ public class topClass {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 tc.buildFrame();
+
+                // สร้างเธรดใหม่เพื่อให้ GUI ทำงานได้
                 Thread t = new Thread(){
                     public void run(){
+                        // อะไรก็ได้ที่อยากให้ทำงานแบบ thread
                     }
                 };
                 t.start();
@@ -45,16 +48,16 @@ public class topClass {
 
     private void buildFrame(){
         f.setContentPane(createContextPane());
-        f.setResizable(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setResizable(false); // ปรับขนาดหน้าต่างได้
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         f.setAlwaysOnTop(false);
         f.setVisible(true);
-        f.setMinimumSize(new Dimension(SCREEN_WIDTH*(1/4), SCREEN_HEIGHT*(1/4)));
-        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        f.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+        f.pack();
     }
 
     private JPanel createContextPane(){
-        JPanel topPanel = new JPanel();
-        return topPanel;
+        JPanel topPanel = new JPanel(); // สร้างพาเนลเพื่อใส่ในหน้าต่าง
+        return topPanel; // ส่งพาเนลกลับไป
     }
 }
