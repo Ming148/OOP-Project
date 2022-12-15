@@ -13,4 +13,4 @@ Flappy Bird :baby_chick:
 |64070075|พีรณัฐ ทิพย์รักษ์|[whiskas69](https://github.com/whiskas69)|
 |64070105|ศศิกานต์ หลงกระจ่าง|[mymoon69](https://github.com/mymoon69)|
 |64070113|โหว้ย หมิง ลี|[Ming148](https://github.com/Ming148)|
-|64070120|กชกร นิลกำแหง||
+|64070120|กชกร นิลกำแหง|[Kodchakorn64070120](https://github.com/Kodchakorn64070120)|
