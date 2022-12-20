@@ -25,7 +25,7 @@ public class TopClass implements ActionListener, KeyListener {
 	private static final int X_MOVEMENT_DIFFERENCE = 5; // ระยะเวลาที่จะเคลื่อนที่ของท่อ
 	private static final int SCREEN_DELAY = 200; // ระยะเวลาที่จะรอให้หน้าจอแสดงผล
 	private static final int BIRD_X_LOCATION = SCREEN_WIDTH / 7;
-	private static final int BIRD_JUMP_DIFF = 7, BIRD_FALL_DIFF = BIRD_JUMP_DIFF + 1, BIRD_JUMP_HEIGHT = PIPE_GAP - BIRD_HEIGHT - BIRD_JUMP_DIFF * 2;
+	private static final int BIRD_JUMP_DIFF = 7, BIRD_FALL_DIFF = BIRD_JUMP_DIFF, BIRD_JUMP_HEIGHT = PIPE_GAP - BIRD_HEIGHT - BIRD_JUMP_DIFF * 2;
 
 
 	private boolean loopVar = true; // false หยุดการทำงานของโปรแกรม, true ทำงานต่อไป
@@ -58,7 +58,7 @@ public class TopClass implements ActionListener, KeyListener {
 
 				Thread t = new Thread() {
 					public void run() {
-						tc.gameScreen(true);
+						tc.gameScreen(true); // สร้างหน้าจอเกม
 					}
 				};
 				t.start();
@@ -81,6 +81,7 @@ public class TopClass implements ActionListener, KeyListener {
 		f.setLocationRelativeTo(null);
 	}
 
+	// สร้างเมนู
 	private JPanel createContentPane() {
 		topPanel = new JPanel();
 		topPanel.setBackground(Color.BLACK);
@@ -122,22 +123,28 @@ public class TopClass implements ActionListener, KeyListener {
 	}
 
 	public void keyPressed(KeyEvent e) {
+
+		// กระโดด
 		if (e.getKeyCode() == KeyEvent.VK_SPACE && gamePlay == true && released == true) {
 			if (birdThrust) { 
 				birdFired = true;
 			}
 			birdThrust = true;
 			released = false;
-		} else if (e.getKeyCode() == KeyEvent.VK_B && gamePlay == false) {
+			// restart
+		} else if (e.getKeyCode() == KeyEvent.VK_SPACE && gamePlay == false) {
 			birdYTracker = SCREEN_HEIGHT / 2 - BIRD_HEIGHT;
 			birdThrust = false;
 			actionPerformed(new ActionEvent(startGame, -1, ""));
 		}
+		// ออกจากเกม
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			System.exit(0);
 		}
 	}
 
+
+	// ถ้าปุ่มถูกปล่อยแล้ว released = true
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			released = true;
@@ -146,6 +153,7 @@ public class TopClass implements ActionListener, KeyListener {
 
 	public void keyTyped(KeyEvent e) {}
 
+	// 
 	private void fadeOperation() {
 		Thread t = new Thread() {
 			public void run() {
@@ -209,6 +217,7 @@ public class TopClass implements ActionListener, KeyListener {
 		t.start();
 	}
 
+    
 	private void gameScreen(boolean isSplash) {
 		BottomPipe bp1 = new BottomPipe(PIPE_WIDTH, PIPE_HEIGHT);
 		BottomPipe bp2 = new BottomPipe(PIPE_WIDTH, PIPE_HEIGHT);

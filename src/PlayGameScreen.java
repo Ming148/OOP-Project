@@ -99,4 +99,5 @@ public class PlayGameScreen extends JPanel {
     public void sendText(String message) {
         this.message = message;
     }
+
 }
