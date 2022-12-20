@@ -191,7 +191,7 @@ public class TopClass implements ActionListener, KeyListener {
 				topPanel.removeAll();
 				topPanel.add(temp);
 				pgs = new PlayGameScreen(SCREEN_WIDTH, SCREEN_HEIGHT, false);
-				pgs.sendText("");
+				pgs.getMessage("");
 				topPanel.add(pgs);
 
 				while (temp.getBackground().getAlpha() != 0) {
@@ -324,7 +324,7 @@ public class TopClass implements ActionListener, KeyListener {
 		collisionHelper(bird.getRectangle(), tp2.getRectangle(), bird.getBI(), tp2.getBI());
 
 		if (bird.getYLoc() + BIRD_HEIGHT > SCREEN_HEIGHT * 7 / 8) {
-			pgs.sendText("Game Over");
+			pgs.getMessage("Game Over");
 			loopVar = false;
 			gamePlay = false;
 		}
@@ -344,7 +344,7 @@ public class TopClass implements ActionListener, KeyListener {
 				for (int j = firstJ; j < r.getHeight() + firstJ; j++) {
 					if ((b1.getRGB(i, j) & 0xFF000000) != 0x00
 							&& (b2.getRGB(i + bp1XHelper, j + bp1YHelper) & 0xFF000000) != 0x00) {
-						pgs.sendText("Game Over");
+						pgs.getMessage("Game Over");
 						loopVar = false;
 						gamePlay = false;
 						break;
