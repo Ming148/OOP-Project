@@ -33,17 +33,17 @@ public class TopClass implements ActionListener, KeyListener {
 	private boolean birdThrust = false; // false -> ปุ่ม space ยังไม่ถูกกด, true -> ปุ่ม space ถูกกดแล้ว
 	private boolean birdFired = false; // true -> ปุ่มถูกกดก่อนกระโดดเสร็จ
 	private boolean released = true; // true -> ปุ่มถูกปล่อยแล้ว, false -> ปุ่มยังไม่ถูกปล่อย
-	private int birdYTracker = SCREEN_HEIGHT / 2 - BIRD_HEIGHT;
-	private Object buildComplete = new Object();
+	private int birdYTracker = SCREEN_HEIGHT / 2 - BIRD_HEIGHT; // ตำแหน่งของนก
+	private Object buildComplete = new Object(); // ใช้ในการรอให้โปรแกรมสร้างหน้าจอเสร็จก่อนที่จะเริ่มเกม
 
 
 	private JFrame f = new JFrame("Flappy Bird OOP");
-	private JButton startGame;
+	private JButton startGame; // ปุ่มเริ่มเกม
 	private JPanel topPanel;
 
 
 	private static TopClass tc = new TopClass();
-	private static PlayGameScreen pgs; 
+	private static PlayGameScreen pgs; // obj ของหน้าจอเกม
 
 	
 	public TopClass() {}

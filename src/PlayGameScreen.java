@@ -20,18 +20,20 @@ public class PlayGameScreen extends JPanel {
     private TopPipe tp1, tp2;
     private Bird bird;
 
+
     public PlayGameScreen(int screenWidth, int screenHeight, boolean isSplash) {
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
         this.isSplash = isSplash;
     }
 
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.setColor(new Color(89, 81, 247));
+        g.setColor(new Color( 201, 255, 229));
         g.fillRect(0, 0, screenWidth, screenHeight * 7 / 8);
-        g.setColor(new Color(147, 136, 9));
+        g.setColor(new Color( 176, 191, 26));
         g.fillRect(0, screenHeight * 7 / 8, screenWidth, screenHeight / 8);
         g.setColor(Color.BLACK);
         g.drawLine(0, screenHeight * 7 / 8, screenWidth, screenHeight * 7 / 8);
@@ -46,6 +48,7 @@ public class PlayGameScreen extends JPanel {
         if (!isSplash && bird != null) {
             g.drawImage(bird.getBird(), bird.getXLoc(), bird.getYLoc(), null);
         }
+
 
         try {
             g.setFont(primaryFont);
@@ -66,10 +69,12 @@ public class PlayGameScreen extends JPanel {
         }
     }
 
+
     public void setBottomPipe(BottomPipe bp1, BottomPipe bp2) {
         this.bp1 = bp1;
         this.bp2 = bp2;
     }
+
 
     public void setTopPipe(TopPipe tp1, TopPipe tp2) {
         this.tp1 = tp1;
@@ -80,13 +85,16 @@ public class PlayGameScreen extends JPanel {
         this.bird = bird;
     }
 
+
     public void incrementJump() {
         successfulJumps++;
     }
 
+
     public int getScore() {
         return successfulJumps;
     }
+
 
     public void sendText(String message) {
         this.message = message;
