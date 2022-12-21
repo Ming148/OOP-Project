@@ -21,6 +21,7 @@ public class Bird {
         return flappyBird;
     }
 
+
     // สร้างฟังก์ชันสำหรับการเปลี่ยนขนาดของรูปภาพ
     public int getWidth() {
         // ใช้ try-catch เพื่อให้โปรแกรมไม่เกิด error ถ้าไม่มีรูปภาพ

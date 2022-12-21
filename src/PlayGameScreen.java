@@ -96,7 +96,7 @@ public class PlayGameScreen extends JPanel {
     }
 
 
-    public void getMessage(String message) {
+    public void setMessage(String message) {
         this.message = message;
     }
 
