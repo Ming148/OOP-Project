@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.*;
 
 public class TopClass implements ActionListener, KeyListener {
-	
+
 
 	private static final int SCREEN_WIDTH = 550;
 	private static final int SCREEN_HEIGHT = 800;
@@ -25,8 +25,10 @@ public class TopClass implements ActionListener, KeyListener {
 	private static final int X_MOVEMENT_DIFFERENCE = 5; // ความเร็วท่อ
 	private static final int SCREEN_DELAY = 300; // ระยะเวลาที่จะรอให้หน้าจอแสดงผล
 	private static final int BIRD_X_LOCATION = SCREEN_WIDTH / 7;
-	private static final int BIRD_JUMP_DIFF = 7, BIRD_FALL_DIFF = BIRD_JUMP_DIFF, BIRD_JUMP_HEIGHT = PIPE_GAP - BIRD_HEIGHT - BIRD_JUMP_DIFF * 2;
-
+	
+	private final int BIRD_JUMP_DIFF = 7
+	, BIRD_FALL_DIFF = BIRD_JUMP_DIFF
+	, BIRD_JUMP_HEIGHT = PIPE_GAP - BIRD_HEIGHT - BIRD_JUMP_DIFF * 2;
 
 
 	private boolean loopVar = true; // false หยุดการทำงานของโปรแกรม, true ทำงานต่อไป
@@ -71,6 +73,7 @@ public class TopClass implements ActionListener, KeyListener {
 	private void buildFrame() {
 		Image icon = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("pic/flappyBird.png"));
 
+
 		f.pack();
 		f.setContentPane(createContentPane());
 		f.setResizable(false);
@@ -81,8 +84,9 @@ public class TopClass implements ActionListener, KeyListener {
 		f.setIconImage(icon);
 		f.addKeyListener(this);
 		f.setLocationRelativeTo(null);
-		f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		// f.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
+
 
 	// สร้างเมนู
 	private JPanel createContentPane() {
@@ -154,6 +158,7 @@ public class TopClass implements ActionListener, KeyListener {
 		}
 	}
 
+
 	public void keyTyped(KeyEvent e) {}
 
 
@@ -224,7 +229,6 @@ public class TopClass implements ActionListener, KeyListener {
 		t.start();
 	}
 
-    
 	private void gameScreen(boolean isSplash) {
 		BottomPipe bp1 = new BottomPipe(PIPE_WIDTH, PIPE_HEIGHT);
 		BottomPipe bp2 = new BottomPipe(PIPE_WIDTH, PIPE_HEIGHT);
@@ -240,6 +244,7 @@ public class TopClass implements ActionListener, KeyListener {
 
 		long startTime = System.currentTimeMillis();
 
+
 		// ถ้าเกมยังไม่จบ
 		while (loopVar) {
 			if ((System.currentTimeMillis() - startTime) > UPDATE_DIFFERENCE) {
@@ -249,22 +254,24 @@ public class TopClass implements ActionListener, KeyListener {
 				} else if (xLoc2 < (0 - PIPE_WIDTH)) {
 					xLoc2 = SCREEN_WIDTH;
 					yLoc2 = bottomPipeLoc();
-					System.out.println(xLoc2);
 				}
 
 				xLoc1 -= X_MOVEMENT_DIFFERENCE;
 				xLoc2 -= X_MOVEMENT_DIFFERENCE;
 
+				// ตรวจสอบว่านกได้รับคำสั่ง space 
 				if (birdFired && !isSplash) {
 					birdYTracker = birdY;
 					birdFired = false;
+					// System.out.println("Fired");
 				}
 
+
 				if (birdThrust && !isSplash) {
+					// ถ้ายังไม่ถึงความสูงที่กำหนด
 					if (birdYTracker - birdY - BIRD_JUMP_DIFF < BIRD_JUMP_HEIGHT) {
 						if (birdY - BIRD_JUMP_DIFF > 0) {
 							birdY -= BIRD_JUMP_DIFF;
-							System.out.println(birdY);
 						} else {
 							birdY = 0;
 							birdYTracker = birdY;
@@ -276,7 +283,6 @@ public class TopClass implements ActionListener, KeyListener {
 					}
 				} else if (!isSplash) {
 					birdY += BIRD_FALL_DIFF;
-					System.out.println(birdY);
 					birdYTracker = birdY;
 				}
 
@@ -288,6 +294,7 @@ public class TopClass implements ActionListener, KeyListener {
 				tp1.setYLoc(yLoc1 - PIPE_GAP - PIPE_HEIGHT);
 				tp2.setXLoc(xLoc2);
 				tp2.setYLoc(yLoc2 - PIPE_GAP - PIPE_HEIGHT);
+
 
 				if (!isSplash) {
 					bird.setXLoc(birdX);
@@ -332,6 +339,7 @@ public class TopClass implements ActionListener, KeyListener {
 		}
 	}
 
+
 	private void collisionDetection(BottomPipe bp1, BottomPipe bp2, TopPipe tp1, TopPipe tp2, Bird bird) {
 		collisionHelper(bird.getRectangle(), bp1.getRectangle(), bird.getBI(), bp1.getBI());
 		collisionHelper(bird.getRectangle(), bp2.getRectangle(), bird.getBI(), bp2.getBI());
@@ -353,6 +361,7 @@ public class TopClass implements ActionListener, KeyListener {
 			// ตำแหน่งของภาพที่ต้องการเช็ค
 			int firstI = (int) (r.getMinX() - r1.getMinX());
 			int firstJ = (int) (r.getMinY() - r1.getMinY());
+
 			int bp1XHelper = (int) (r1.getMinX() - r2.getMinX());
 			int bp1YHelper = (int) (r1.getMinY() - r2.getMinY());
 			// System.out.println("firstI: " + firstI + " firstJ: " + firstJ + " bp1XHelper: " + bp1XHelper + " bp1YHelper: "
